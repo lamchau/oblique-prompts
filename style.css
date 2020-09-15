@@ -1,0 +1,64 @@
+body {
+  margin: 10px 20px;
+  font-family: "Georgia";
+}
+.header {
+  width: 400px;
+  margin-bottom: 20px;
+}
+.header__title {
+  font-size: 25px;
+  font-weight: bold;
+}
+.header__accreditation {
+  font-size: 16px;
+  text-align: right;
+}
+.header a,
+.header a:hover,
+.header a:visited {
+  text-decoration: none;
+  color: blue;
+}
+.prompt {
+  width: 650px;
+}
+.title {
+  font-weight: bold;
+  margin: 10px 20px;
+}
+.message {
+  white-space: pre-line;
+  margin-left: 20px;
+  color: #888;
+  text-align: justify;
+}
+button {
+  margin: 3px 2px;
+  padding: 4px 12px;
+  color: white;
+  font-family: "Georgia";
+  display: inline-block;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.21);
+  border-bottom: 4px solid rgba(0, 0, 0, 0.21);
+  border-radius: 4px;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+  background: linear-gradient(to bottom, #6698cb 0%, #5c8ab8 100%);
+}
+button:focus {
+  outline: 0;
+}
+button:hover {
+  cursor: pointer;
+}
+blockquote {
+  margin: 15px;
+  padding: 15px;
+  background: #eee;
+  font-style: italic;
+}
+blockquote footer {
+  margin-top: 10px;
+  margin-left: 15px;
+}
