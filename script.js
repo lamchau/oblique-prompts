@@ -53,11 +53,31 @@ const sample = array => {
 };
 
 class MyApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { item: this.getPrompt() };
+  }
+
+  getPrompt() {
+    let next = sample(PROMPTS);
+    if (this.state && this.state.item) {
+      while (this.state.item.title === next.title) {
+        next = sample(PROMPTS);
+      }
+    }
+    return next;
+  }
+
   render() {
     // return <div>{PROMPTS.map(item => <PromptWidget key={item.key} title={item.key} message={item.value} />)}</div>;
-    return React.createElement("div", null, React.createElement(GeneratePromptButton, null));
-  }}
-
+    return React.createElement('div', null,
+      React.createElement('button', {
+        onClick: () => this.setState({ item: this.getPrompt() })
+      }, 'Next Prompt'),
+      React.createElement(PromptWidget, { item: this.state.item })
+    );
+  }
+}
 
 class PromptWidget extends React.Component {
   render() {
@@ -76,38 +96,6 @@ class PromptWidget extends React.Component {
     );
   }
 }
-
-
-class GeneratePromptButton extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-    this.state = { item: this.getNextPrompt() };
-  }
-
-  handleClick() {
-    this.setState({ item: this.getNextPrompt() });
-  }
-
-  getNextPrompt() {
-    let next = sample(PROMPTS);
-    if (this.state && this.state.item) {
-      while (this.state.item.title === next.title) {
-        next = sample(PROMPTS);
-      }
-    }
-    return next;
-  }
-
-  render() {
-    return (
-      React.createElement("div", null,
-      React.createElement("button", { onClick: this.handleClick.bind(this) }, "Next Prompt"),
-      React.createElement(PromptWidget, { ...this.state })));
-
-
-  }}
-
 
 ReactDOM.render(
   React.createElement(MyApp, null),
