@@ -45,7 +45,8 @@ const PROMPTS_RAW = {
   "Put the problem aside and work on something else.": "Thrashing won't solve the problem."
 };
 
-const PROMPTS = Object.keys(PROMPTS_RAW).map(key => {return { key, value: PROMPTS_RAW[key] };});
+const PROMPTS = Object.keys(PROMPTS_RAW)
+  .map(title => ({ title, message: PROMPTS_RAW[title]}));
 const MAX_PROMPTS = PROMPTS.length;
 let currentIndex = 0;
 const nextInt = (min, max) => Math.floor(min + Math.random() * (max - min));
@@ -96,7 +97,7 @@ class GeneratePromptButton extends React.Component {
     return (
       React.createElement("div", null,
       React.createElement("button", { onClick: this.handleClick.bind(this) }, "Next Prompt"),
-      React.createElement(PromptWidget, { title: this.state.item.key, message: this.state.item.value })));
+      React.createElement(PromptWidget, { title: this.state.item.title, message: this.state.item.message })));
 
 
   }}
