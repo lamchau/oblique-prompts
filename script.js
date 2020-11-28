@@ -47,16 +47,9 @@ const PROMPTS_RAW = {
 
 const PROMPTS = Object.keys(PROMPTS_RAW)
   .map(title => ({ title, message: PROMPTS_RAW[title]}));
-const MAX_PROMPTS = PROMPTS.length;
-let currentIndex = 0;
-const nextInt = (min, max) => Math.floor(min + Math.random() * (max - min));
-const getNextPrompt = () => {
-  let index = nextInt(0, MAX_PROMPTS);
-  while (index === currentIndex) {
-    index = nextInt(0, MAX_PROMPTS);
-  }
-  currentIndex = index;
-  return PROMPTS[index];
+const sample = array => {
+  const nextInt = (min, max) => Math.floor(min + Math.random() * (max - min));
+  return array[nextInt(0, array.length)];
 };
 
 class MyApp extends React.Component {
@@ -86,11 +79,21 @@ class GeneratePromptButton extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
-    this.state = { item: getNextPrompt() };
+    this.state = { item: this.getNextPrompt() };
   }
 
   handleClick() {
-    this.setState({ item: getNextPrompt() });
+    this.setState({ item: this.getNextPrompt() });
+  }
+
+  getNextPrompt() {
+    let next = sample(PROMPTS);
+    if (this.state && this.state.item) {
+      while (this.state.item.title === next.title) {
+        next = sample(PROMPTS);
+      }
+    }
+    return next;
   }
 
   render() {
