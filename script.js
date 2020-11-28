@@ -61,18 +61,21 @@ class MyApp extends React.Component {
 
 class PromptWidget extends React.Component {
   render() {
-    if (!this.props.title) {
+    if (!this.props.item) {
       return null;
     }
+    const { title, message } = this.props.item;
     return (
-      React.createElement("div", { className: "prompt" },
-      React.createElement("h2", { className: "title" },
-      this.props.title),
-
-      React.createElement("div", { className: "message", dangerouslySetInnerHTML: { __html: this.props.message } })));
-
-
-  }}
+      React.createElement('div', { className: 'prompt' },
+        React.createElement('h2', { className: 'title' }, title),
+        React.createElement('div', {
+          className: 'message',
+          dangerouslySetInnerHTML: { __html: message }
+        })
+      )
+    );
+  }
+}
 
 
 class GeneratePromptButton extends React.Component {
@@ -100,7 +103,7 @@ class GeneratePromptButton extends React.Component {
     return (
       React.createElement("div", null,
       React.createElement("button", { onClick: this.handleClick.bind(this) }, "Next Prompt"),
-      React.createElement(PromptWidget, { title: this.state.item.title, message: this.state.item.message })));
+      React.createElement(PromptWidget, { ...this.state })));
 
 
   }}
