@@ -54,7 +54,7 @@ const sample = array => {
   return array[nextInt(0, array.length)];
 };
 
-class MyApp extends React.Component {
+class ObliquePrompts extends React.Component {
   constructor(props) {
     super(props);
     this.state = { item: this.getPrompt() };
@@ -103,6 +103,6 @@ class PromptWidget extends React.Component {
 }
 
 ReactDOM.render(
-  React.createElement(MyApp, null),
+  React.createElement(ObliquePrompts, null),
   document.getElementById('root')
 );
