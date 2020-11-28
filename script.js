@@ -42,7 +42,8 @@ const PROMPTS_RAW = {
   "Have goals and subdivide them.": "Test-driven development is one implementation of this strategy.",
   "Do it the wrong way.": "If you have an idea, but know that it's wrong, build it the wrong way anyway. Then throw it out. This can give you a better grip for your next attempt.<blockquote>...truth will sooner come out of error than from confusion.<footer>— Francis Bacon, 1620</footer></blockquote>",
   "Do something.": " Work on the wrong thing. Make something up. Start even if you don't have all the information. Inaction won't solve the problem.",
-  "Put the problem aside and work on something else.": "Thrashing won't solve the problem." };
+  "Put the problem aside and work on something else.": "Thrashing won't solve the problem."
+};
 
 const PROMPTS = Object.keys(PROMPTS_RAW).map(key => {return { key, value: PROMPTS_RAW[key] };});
 const MAX_PROMPTS = PROMPTS.length;
@@ -101,4 +102,7 @@ class GeneratePromptButton extends React.Component {
   }}
 
 
-ReactDOM.render(React.createElement(MyApp, null), document.getElementById('root'));
+ReactDOM.render(
+  React.createElement(MyApp, null),
+  document.getElementById('root')
+);
