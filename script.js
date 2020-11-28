@@ -45,8 +45,10 @@ const PROMPTS_RAW = {
   "Put the problem aside and work on something else.": "Thrashing won't solve the problem."
 };
 
+const DEBUG = false;
 const PROMPTS = Object.keys(PROMPTS_RAW)
   .map(title => ({ title, message: PROMPTS_RAW[title]}));
+
 const sample = array => {
   const nextInt = (min, max) => Math.floor(min + Math.random() * (max - min));
   return array[nextInt(0, array.length)];
@@ -69,7 +71,10 @@ class MyApp extends React.Component {
   }
 
   render() {
-    // return <div>{PROMPTS.map(item => <PromptWidget key={item.key} title={item.key} message={item.value} />)}</div>;
+    if (DEBUG) {
+      return PROMPTS.map((item, index) =>
+        React.createElement(PromptWidget, { key: index, item }));
+    }
     return React.createElement('div', null,
       React.createElement('button', {
         onClick: () => this.setState({ item: this.getPrompt() })
