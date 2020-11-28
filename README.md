@@ -13,4 +13,5 @@ This was extracted from [Kevin Lawler's post](https://kevinlawler.com/prompts) a
 ## Resources/Attributions
 
 - [Kevin Lawler's post](https://kevinlawler.com/prompts)
-- Derived from [Brian Eno's _Oblique Strategies_ ](https://www.enoshop.co.uk/product/oblique-strategies.html) deck.
+- Derived from [Brian Eno's _Oblique Strategies_ ](https://www.enoshop.co.uk/product/oblique-strategies.html) deck
+- [Github Corners](https://github.com/tholman/github-corners)
